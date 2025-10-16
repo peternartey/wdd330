@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and discover delicious recipes">
+    <title>Recipe Search - MealPlanner</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>🍽️ MealPlanner</h1>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html" class="active">Discover</a></li>
+                    <li><a href="meal-planner.html">Meal Plan</a></li>
+                    <li><a href="shopping-list.html">Shopping</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <h2>Discover Recipes</h2>
+                
+                <!-- Search Bar -->
+                <div class="search-bar-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="🔍 Search for recipes, ingredients..."
+                        aria-label="Search recipes"
+                    >
+                    <button id="searchBtn" class="search-btn">Search</button>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filters-container">
+                    <h3>Filters</h3>
+                    
+                    <div class="filter-group">
+                        <label for="cuisineFilter">Cuisine:</label>
+                        <select id="cuisineFilter" class="filter-select">
+                            <option value="">All Cuisines</option>
+                            <option value="african">African</option>
+                            <option value="american">American</option>
+                            <option value="british">British</option>
+                            <option value="cajun">Cajun</option>
+                            <option value="caribbean">Caribbean</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="french">French</option>
+                            <option value="ghanaian">Ghanaian</option>
+                            <option value="german">German</option>
+                            <option value="greek">Greek</option>
+                            <option value="indian">Indian</option>
+                            <option value="italian">Italian</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="korean">Korean</option>
+                            <option value="latin american">Latin American</option>
+                            <option value="nigerian">Nigerian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="middle eastern">Middle Eastern</option>
+                            <option value="thai">Thai</option>
+                            <option value="vietnamese">Vietnamese</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="dietFilter">Diet:</label>
+                        <select id="dietFilter" class="filter-select">
+                            <option value="">All Diets</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten free">Gluten Free</option>
+                            <option value="ketogenic">Keto</option>
+                            <option value="paleo">Paleo</option>
+                            <option value="primal">Primal</option>
+                            <option value="whole30">Whole30</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="maxTimeFilter">Max Cooking Time:</label>
+                        <select id="maxTimeFilter" class="filter-select">
+                            <option value="">Any Time</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="120">2 hours</option>
+                        </select>
+                    </div>
+
+                    <button id="clearFilters" class="clear-btn">Clear Filters</button>
+                </div>
+
+                <!-- Quick Filter Pills -->
+                <div class="quick-filters">
+                    <button class="filter-pill" data-diet="vegetarian">🥗 Vegetarian</button>
+                    <button class="filter-pill" data-diet="vegan">🌱 Vegan</button>
+                    <button class="filter-pill" data-diet="gluten free">🌾 Gluten Free</button>
+                    <button class="filter-pill" data-time="30">⏱️ Quick (30 min)</button>
+                    <button class="filter-pill" data-cuisine="italian">🍝 Italian</button>
+                    <button class="filter-pill" data-cuisine="mexican">🌮 Mexican</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="container">
+                <div class="results-header">
+                    <h3 id="resultsTitle">Popular Recipes</h3>
+                    <span id="resultsCount"></span>
+                </div>
+
+                <!-- Recipe Results Grid -->
+                <div class="recipes-grid" id="searchResults">
+                    <!-- Recipe cards will be loaded here via JavaScript -->
+                    <div class="loading-message">Search for recipes to get started...</div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                    <button id="loadMoreBtn" class="load-more-btn">Load More Recipes</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Recipe & Meal Planner. All rights reserved.</p>
+            <p>Powered by Spoonacular API</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+      <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/recipe.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View recipe details, ingredients, and instructions">
+    <title>Recipe Details - MealPlanner</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>🍽️ MealPlanner</h1>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Discover</a></li>
+                    <li><a href="meal-planner.html">Meal Plan</a></li>
+                    <li><a href="shopping-list.html">Shopping</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Back Button -->
+        <section class="back-section">
+            <div class="container">
+                <a href="search.html" class="back-btn">← Back to Search</a>
+            </div>
+        </section>
+
+        <!-- Recipe Hero Section -->
+        <section class="recipe-hero">
+            <div class="container">
+                <div class="recipe-hero-content">
+                    <div class="recipe-image-container">
+                        <img id="recipeImage" src="" alt="Recipe Image" class="recipe-hero-image">
+                    </div>
+                    
+                    <div class="recipe-header-info">
+                        <h1 id="recipeTitle" class="recipe-title">Loading Recipe...</h1>
+                        
+                        <div class="recipe-meta">
+                            <span class="meta-item">
+                                <span class="meta-icon">⏱️</span>
+                                <span id="recipeTime">-- min</span>
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">👥</span>
+                                <span id="recipeServings">-- servings</span>
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">⭐</span>
+                                <span id="recipeRating">--</span>
+                            </span>
+                        </div>
+
+                        <div class="recipe-actions">
+                            <button id="saveBtn" class="btn btn-primary">
+                                <span>❤️</span> Save to Favorites
+                            </button>
+                            <button id="addToMealPlanBtn" class="btn btn-secondary">
+                                <span>📅</span> Add to Meal Plan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipe Content Section -->
+        <section class="recipe-content">
+            <div class="container">
+                <div class="recipe-layout">
+                    <!-- Left Column: Ingredients & Nutrition -->
+                    <aside class="recipe-sidebar">
+                        <!-- Ingredients -->
+                        <div class="ingredients-card">
+                            <h2>Ingredients</h2>
+                            <ul id="ingredientsList" class="ingredients-list">
+                                <li class="loading-message">Loading ingredients...</li>
+                            </ul>
+                            <button id="addToShoppingBtn" class="btn btn-outline">
+                                🛒 Add to Shopping List
+                            </button>
+                        </div>
+
+                        <!-- Nutrition Info -->
+                        <div class="nutrition-card">
+                            <h3>Nutrition per Serving</h3>
+                            <div id="nutritionInfo" class="nutrition-grid">
+                                <div class="nutrition-item">
+                                    <span class="nutrition-label">Calories</span>
+                                    <span class="nutrition-value" id="nutritionCalories">--</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span class="nutrition-label">Protein</span>
+                                    <span class="nutrition-value" id="nutritionProtein">--g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span class="nutrition-label">Carbs</span>
+                                    <span class="nutrition-value" id="nutritionCarbs">--g</span>
+                                </div>
+                                <div class="nutrition-item">
+                                    <span class="nutrition-label">Fat</span>
+                                    <span class="nutrition-value" id="nutritionFat">--g</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diet Labels -->
+                        <div class="diet-labels" id="dietLabels">
+                            <!-- Diet badges will be added here -->
+                        </div>
+                    </aside>
+
+                    <!-- Right Column: Instructions -->
+                    <div class="recipe-main">
+                        <!-- Summary -->
+                        <div class="recipe-summary">
+                            <h2>About This Recipe</h2>
+                            <p id="recipeSummary">Loading description...</p>
+                        </div>
+
+                        <!-- Instructions -->
+                        <div class="recipe-instructions">
+                            <h2>Instructions</h2>
+                            <ol id="instructionsList" class="instructions-list">
+                                <li class="loading-message">Loading instructions...</li>
+                            </ol>
+                        </div>
+
+                        <!-- Equipment (Optional) -->
+                        <div class="recipe-equipment" id="equipmentSection" style="display: none;">
+                            <h3>Equipment Needed</h3>
+                            <ul id="equipmentList" class="equipment-list"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Similar Recipes Section -->
+        <section class="similar-recipes">
+            <div class="container">
+                <h2>Similar Recipes You Might Like</h2>
+                <div class="recipes-grid" id="similarRecipes">
+                    <div class="loading-message">Loading similar recipes...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Recipe & Meal Planner. All rights reserved.</p>
+            <p>Powered by Spoonacular API</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+      <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/recipe.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

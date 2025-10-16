@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan your weekly meals">
+    <title> Meal Planner - MealPlanner</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>🍽️ MealPlanner</h1>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Discover</a></li>
+                    <li><a href="meal-planner.html" class="active">Meal Plan</a></li>
+                    <li><a href="shopping-list.html">Shopping</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Planner Header -->
+        <section class="planner-header">
+            <div class="container">
+                <h2>Weekly Meal Planner</h2>
+                
+                <!-- Week Navigator -->
+                <div class="week-navigator">
+                    <button id="prevWeek" class="week-nav-btn" aria-label="Previous week">←</button>
+                    <h3 id="currentWeek">Week of January 6, 2025</h3>
+                    <button id="nextWeek" class="week-nav-btn" aria-label="Next week">→</button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="planner-actions">
+                    <button id="generatePlanBtn" class="btn btn-primary">
+                        🎲 Auto-Generate Plan
+                    </button>
+                    <button id="clearPlanBtn" class="btn btn-outline">
+                        🗑️ Clear Week
+                    </button>
+                    <a href="shopping-list.html" class="btn btn-secondary">
+                        🛒 View Shopping List
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weekly Calendar -->
+        <section class="weekly-calendar">
+            <div class="container">
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Monday -->
+                    <div class="day-column" data-day="monday">
+                        <div class="day-header">
+                            <h4>Monday</h4>
+                            <span class="day-date" id="mondayDate">Jan 6</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="monday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="monday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="monday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="day-column" data-day="tuesday">
+                        <div class="day-header">
+                            <h4>Tuesday</h4>
+                            <span class="day-date" id="tuesdayDate">Jan 7</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="tuesday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="tuesday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="tuesday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="day-column" data-day="wednesday">
+                        <div class="day-header">
+                            <h4>Wednesday</h4>
+                            <span class="day-date" id="wednesdayDate">Jan 8</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="wednesday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="wednesday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="wednesday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="day-column" data-day="thursday">
+                        <div class="day-header">
+                            <h4>Thursday</h4>
+                            <span class="day-date" id="thursdayDate">Jan 9</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="thursday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="thursday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="thursday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="day-column" data-day="friday">
+                        <div class="day-header">
+                            <h4>Friday</h4>
+                            <span class="day-date" id="fridayDate">Jan 10</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="friday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="friday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="friday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="day-column" data-day="saturday">
+                        <div class="day-header">
+                            <h4>Saturday</h4>
+                            <span class="day-date" id="saturdayDate">Jan 11</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="saturday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="saturday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="saturday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div class="day-column" data-day="sunday">
+                        <div class="day-header">
+                            <h4>Sunday</h4>
+                            <span class="day-date" id="sundayDate">Jan 12</span>
+                        </div>
+                        <div class="meals-container">
+                            <div class="meal-slot" data-meal="breakfast">
+                                <div class="meal-slot-header">
+                                    <span>🌅 Breakfast</span>
+                                </div>
+                                <div class="meal-slot-content" id="sunday-breakfast">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="lunch">
+                                <div class="meal-slot-header">
+                                    <span>🌞 Lunch</span>
+                                </div>
+                                <div class="meal-slot-content" id="sunday-lunch">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                            <div class="meal-slot" data-meal="dinner">
+                                <div class="meal-slot-header">
+                                    <span>🌙 Dinner</span>
+                                </div>
+                                <div class="meal-slot-content" id="sunday-dinner">
+                                    <button class="add-meal-btn">+ Add Meal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weekly Summary -->
+        <section class="weekly-summary">
+            <div class="container">
+                <h3>Weekly Summary</h3>
+                <div class="summary-stats">
+                    <div class="summary-card">
+                        <span class="summary-label">Total Meals</span>
+                        <span class="summary-value" id="totalMeals">0 / 21</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Avg Calories/Day</span>
+                        <span class="summary-value" id="avgCalories">0</span>
+                    </div>
+                    <div class="summary-card">
+                        <span class="summary-label">Shopping Items</span>
+                        <span class="summary-value" id="shoppingItems">0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Recipe & Meal Planner. All rights reserved.</p>
+            <p>Powered by Spoonacular API</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+      <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/meal-planner.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

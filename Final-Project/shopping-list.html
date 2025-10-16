@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your grocery shopping list" />
+    <title>Shopping List - MealPlanner</title>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header class="main-header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <h1>🍽️ MealPlanner</h1>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Discover</a></li>
+            <li><a href="meal-planner.html">Meal Plan</a></li>
+            <li><a href="shopping-list.html" class="active">Shopping</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Shopping List Header -->
+      <section class="shopping-header">
+        <div class="container">
+          <h2>Shopping List</h2>
+          <p class="shopping-subtitle">Based on your weekly meal plan</p>
+
+          <!-- Action Buttons -->
+          <div class="shopping-actions">
+            <button id="generateListBtn" class="btn btn-primary">
+              🔄 Generate from Meal Plan
+            </button>
+            <button id="printListBtn" class="btn btn-secondary">
+              🖨️ Print List
+            </button>
+            <button id="clearListBtn" class="btn btn-outline">
+              🗑️ Clear All
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shopping List Content -->
+      <section class="shopping-content">
+        <div class="container">
+          <!-- Add Custom Item -->
+          <div class="add-item-section">
+            <h3>Add Custom Item</h3>
+            <div class="add-item-form">
+              <input
+                type="text"
+                id="customItemInput"
+                class="custom-item-input"
+                placeholder="Enter item name..."
+                aria-label="Custom item"
+              />
+              <select id="customCategorySelect" class="category-select">
+                <option value="produce">🥬 Produce</option>
+                <option value="meat">🥩 Meat & Seafood</option>
+                <option value="dairy">🥛 Dairy</option>
+                <option value="grains">🌾 Grains & Bread</option>
+                <option value="pantry">🥫 Pantry</option>
+                <option value="spices">🧂 Spices & Condiments</option>
+                <option value="other">📦 Other</option>
+              </select>
+              <button id="addItemBtn" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+
+          <!-- Shopping List by Category -->
+          <div class="shopping-list-container">
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+              <p>🛒 Your shopping list is empty</p>
+              <p>Generate a list from your meal plan or add items manually</p>
+            </div>
+
+            <!-- Produce -->
+            <div
+              class="category-section"
+              id="produceSection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🥬 Produce</h3>
+                <span class="item-count" id="produceCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="produceItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Meat & Seafood -->
+            <div
+              class="category-section"
+              id="meatSection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🥩 Meat & Seafood</h3>
+                <span class="item-count" id="meatCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="meatItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Dairy -->
+            <div
+              class="category-section"
+              id="dairySection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🥛 Dairy</h3>
+                <span class="item-count" id="dairyCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="dairyItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Grains & Bread -->
+            <div
+              class="category-section"
+              id="grainsSection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🌾 Grains & Bread</h3>
+                <span class="item-count" id="grainsCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="grainsItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Pantry -->
+            <div
+              class="category-section"
+              id="pantrySection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🥫 Pantry</h3>
+                <span class="item-count" id="pantryCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="pantryItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Spices & Condiments -->
+            <div
+              class="category-section"
+              id="spicesSection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>🧂 Spices & Condiments</h3>
+                <span class="item-count" id="spicesCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="spicesItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+
+            <!-- Other -->
+            <div
+              class="category-section"
+              id="otherSection"
+              style="display: none"
+            >
+              <div class="category-header">
+                <h3>📦 Other</h3>
+                <span class="item-count" id="otherCount">0 items</span>
+              </div>
+              <ul class="shopping-items" id="otherItems">
+                <!-- Items will be added here -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Shopping Summary -->
+          <div class="shopping-summary">
+            <h3>Summary</h3>
+            <div class="summary-stats">
+              <div class="stat-item">
+                <span class="stat-label">Total Items:</span>
+                <span class="stat-value" id="totalItems">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Checked:</span>
+                <span class="stat-value" id="checkedItems">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Remaining:</span>
+                <span class="stat-value" id="remainingItems">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <div class="container">
+        <p>&copy; 2025 Recipe & Meal Planner. All rights reserved.</p>
+        <p>Powered by Spoonacular API</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/shopping-list.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
