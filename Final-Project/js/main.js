@@ -753,6 +753,16 @@ function updateShoppingListSummary(total, checked) {
     if (remainingElement) remainingElement.textContent = total - checked;
 }
 
+fetch("data/data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    document.querySelector(".welcome-section h2").textContent = `Welcome back, ${data.user.name}! 👋`;
+    console.log("Today's Meals:", data.meals);
+    console.log("Recommended Recipes:", data.recommendedRecipes);
+  })
+  .catch((error) => console.error("Error loading JSON:", error));
+
+
 /* ========================================
    EXPORT
 ======================================== */

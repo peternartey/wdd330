@@ -1,0 +1,19 @@
+{
+  "meals": [
+    {
+      "id": "breakfast",
+      "name": "Breakfast",
+      "items": ["Oatmeal with Banana", "Green Smoothie", "Boiled Egg"]
+    },
+    {
+      "id": "lunch",
+      "name": "Lunch",
+      "items": ["Grilled Chicken Salad", "Jollof Rice", "Avocado Toast"]
+    },
+    {
+      "id": "dinner",
+      "name": "Dinner",
+      "items": ["Baked Fish", "Steamed Vegetables", "Brown Rice"]
+    }
+  ]
+}

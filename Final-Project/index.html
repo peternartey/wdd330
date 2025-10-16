@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Recipe & Meal Planner - Plan your meals, discover recipes, and track nutrition" />
-  <meta name="keywords" content="recipes, meal planner, nutrition tracker, healthy eating, meal planner app" />
-  <title>Recipe & Meal Planner - Home</title>
+  <meta name="description" content="Perfect Diet & Meal Planner - Plan your meals, discover recipes, and track nutrition" />
+  <meta name="keywords" content="Perfect Diet, meal planner, nutrition tracker, healthy eating, meal planner app" />
+  <title>Perfect Diet & Meal Planner - Home</title>
 
   <!-- CSS Links -->
   <link rel="stylesheet" href="css/styles.css" />
@@ -112,7 +112,6 @@
       <div class="container">
         <h3>Today's Nutrition</h3>
         <div class="nutrition-stats">
-          <!-- Calories -->
           <div class="stat-card" role="region" aria-label="Calories summary">
             <div class="stat-header">
               <span class="stat-label">Calories</span>
@@ -123,7 +122,6 @@
             </div>
           </div>
 
-          <!-- Macros Grid -->
           <div class="macros-grid" role="group" aria-label="Macronutrients">
             <div class="macro-item" role="status" aria-live="polite">
               <span class="macro-label">Protein</span>
@@ -151,13 +149,11 @@
         </div>
 
         <div class="recipes-grid" id="recommendedRecipes" aria-live="polite">
-          <!-- Recipe cards will be loaded here via JavaScript -->
           <div class="loading-message">Loading recipes...</div>
         </div>
       </div>
     </section>
 
-    <!-- Favorites Section (so #favorites anchor is valid) -->
     <section id="favorites" class="favorites-section">
       <div class="container">
         <h3>Your Favorites</h3>
@@ -166,7 +162,6 @@
       </div>
     </section>
 
-    <!-- Quick Actions Section -->
     <section id="quick-actions" class="quick-actions">
       <div class="container">
         <h3>Quick Actions</h3>
@@ -199,15 +194,14 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="main-footer" role="contentinfo">
     <div class="container">
-      <p>&copy; 2025 Izy Recipe & Meal Planner. All rights reserved.</p>
+      <p>&copy; 2025 Perfect Diet & Meal Planner. All rights reserved.</p>
       <p>Powered by Spoonacular API</p>
     </div>
   </footer>
 
-  <!-- JavaScript Files (deferred to improve performance) -->
+  <!-- JavaScript Files -->
   <script src="js/config.js" defer></script>
   <script src="js/utils.js" defer></script>
   <script src="js/storage.js" defer></script>
@@ -215,19 +209,40 @@
   <script src="js/recipe.js" defer></script>
   <script src="js/main.js" defer></script>
 
-  <!-- Small accessible menu toggle fallback (won't conflict if main.js manages it) -->
+  <!-- Menu Toggle -->
   <script>
     (function () {
       const btn = document.getElementById('menuToggle');
       const nav = document.getElementById('navMenu');
       if (!btn || !nav) return;
-
       btn.addEventListener('click', function () {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!expanded));
         nav.classList.toggle('open');
       });
     })();
+  </script>
+
+  <!-- ✅ Dynamic Data Loader -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          data.meals.forEach(meal => {
+            const section = document.getElementById(meal.id);
+            const content = section.querySelector('.meal-content');
+            content.innerHTML = ''; // clear "+ Add" text
+
+            meal.items.forEach(item => {
+              const p = document.createElement('p');
+              p.textContent = item;
+              content.appendChild(p);
+            });
+          });
+        })
+        .catch(error => console.error('Error loading meal data:', error));
+    });
   </script>
 </body>
 </html>
